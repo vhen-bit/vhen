@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arven E. Solero | Software Developer & Technical Support Engineer</title>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent-color: #38bdf8;
+            --accent-hover: #0284c7;
+            --border-color: #334155;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--accent-hover);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Layout Container */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 6rem 2rem 3rem 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 3rem;
+            padding: 4rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 2.75rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-text h2 {
+            font-size: 1.3rem;
+            color: var(--accent-color);
+            font-weight: 500;
+            margin-bottom: 1.25rem;
+        }
+
+        .hero-text p {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.25rem;
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        .contact-item i {
+            color: var(--accent-color);
+        }
+
+        .hero-image {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            border: 4px solid var(--accent-color);
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            flex-shrink: 0;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 4rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .section-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 50%;
+            height: 3px;
+            background-color: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-card {
+            background-color: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .skill-card h3 {
+            font-size: 1.15rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-card ul {
+            list-style: none;
+        }
+
+        .skill-card li {
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.25rem;
+            font-size: 0.95rem;
+        }
+
+        .skill-card li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+        }
+
+        /* Experience Timeline */
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .timeline-card {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .role-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .company-name {
+            color: var(--accent-color);
+            font-weight: 500;
+        }
+
+        .date-badge {
+            background-color: rgba(56, 189, 248, 0.1);
+            color: var(--accent-color);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .timeline-body ul {
+            list-style: none;
+        }
+
+        .timeline-body li {
+            color: var(--text-secondary);
+            margin-bottom: 0.75rem;
+            position: relative;
+            padding-left: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .timeline-body li::before {
+            content: '•';
+            position: absolute;
+            left: 0.25rem;
+            color: var(--accent-color);
+            font-size: 1.2rem;
+        }
+
+        /* Education & Details */
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .info-card {
+            background-color: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .info-card h3 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            font-size: 1.15rem;
+        }
+
+        .info-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .info-label {
+            color: var(--text-secondary);
+        }
+
+        .info-value {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+
+            .contact-info {
+                justify-content: center;
+            }
+
+            .timeline-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .nav-links {
+                display: none; /* Can be toggled with JS if menu icon added */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Header -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Arven<span>.Solero</span></div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Hero / Summary Section -->
+        <section id="about" class="hero">
+            <div class="hero-text">
+                <h1>Arven E. Solero</h1>
+                <h2>Software Developer — Operations, Delivery & AI</h2>
+                <p>
+                    Analytical and solutions-driven technical professional with experience in software troubleshooting, 
+                    API integrations, technical operations, and customer-focused problem resolution. Experienced in e-commerce platforms, 
+                    data migration, workflow optimization, and AI-related implementations.
+                </p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>Lakandula, Mabalacat City, Pangasinan</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fa-solid fa-phone"></i>
+                        <span>(+63) 9913296672 / (+63) 9950410092</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fa-solid fa-envelope"></i>
+                        <a href="mailto:arvensolero@gmail.com">arvensolero@gmail.com</a>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <!-- Replace 'profile.jpg' with your actual image path or URL -->
+                <img src="profile.jpg" alt="Arven E. Solero Profile Picture">
+            </div>
+        </section>
+
+        <!-- Core Competencies & Skills Section -->
+        <section id="skills">
+            <h2 class="section-title">Core Competencies</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3><i class="fa-solid fa-code"></i> Technical Troubleshooting</h3>
+                    <ul>
+                        <li>E-commerce Platforms: Shopify, WooCommerce, BigCommerce, Magento, Salesforce</li>
+                        <li>Integrations & Widgets Customization</li>
+                        <li>Product Data & Syndication (Google, Walmart, Target)</li>
+                        <li>Email Configurations</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3><i class="fa-solid fa-brain"></i> Analytical & Problem Solving</h3>
+                    <ul>
+                        <li>Root Cause Analysis & Payload Inspection</li>
+                        <li>API Request/Response Validation</li>
+                        <li>Detail-Oriented System Troubleshooting</li>
+                        <li>Collaborative Integration Problem-Solving</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3><i class="fa-solid fa-users"></i> Client Relations & Soft Skills</h3>
+                    <ul>
+                        <li>Premium & High-Touch Account Management</li>
+                        <li>Low-Touch SME Leadership</li>
+                        <li>Proactive Communication & Active Listening</li>
+                        <li>Customer-Focused Technical Delivery</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience">
+            <h2 class="section-title">Professional Experience</h2>
+            <div class="timeline">
+                
+                <!-- Yotpo -->
+                <div class="timeline-card">
+                    <div class="timeline-header">
+                        <div>
+                            <div class="role-title">Technical Support Engineer (Premium & Enterprise)</div>
+                            <div class="company-name">Yotpo</div>
+                        </div>
+                        <span class="date-badge">March 2023 - Present</span>
+                    </div>
+                    <div class="timeline-body">
+                        <ul>
+                            <li>Progressed from Low Touch Support to Low Touch SME, and promoted to High Touch (Premium & Enterprise) Support through performance advancement.</li>
+                            <li>Troubleshoot and resolve Shopify and e-commerce integration issues involving Yotpo Reviews widgets, product catalogs, orders, and review synchronization.</li>
+                            <li>Customize and debug on-site widgets using CSS and front-end inspection tools to meet client design and functionality requirements.</li>
+                            <li>Use REST API endpoints to create test orders, retrieve review data/metadata, update products, and validate API responses.</li>
+                            <li>Investigate data mapping, migration, and synchronization issues across Shopify, WooCommerce, Magento, BigCommerce, and Salesforce Commerce Cloud.</li>
+                            <li>Troubleshoot AI crawlability and review discoverability in platforms such as ChatGPT and Gemini, including structured data and schema markup validation.</li>
+                            <li>Perform root-cause analysis using API responses, browser developer tools, website source code, and backend data.</li>
+                            <li>Collaborate with engineering and cross-functional teams to resolve complex technical issues and improve software integrations.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- ADH -->
+                <div class="timeline-card">
+                    <div class="timeline-header">
+                        <div>
+                            <div class="role-title">I.T. Tech Support / Technician → IT Head</div>
+                            <div class="company-name">Alaminos Doctors' Hospital Inc. (ADH)</div>
+                        </div>
+                        <span class="date-badge">2017 - 2023</span>
+                    </div>
+                    <div class="timeline-body">
+                        <ul>
+                            <li>Promoted through career progression from IT Tech Support/Technician to IT Head.</li>
+                            <li>Managed IT infrastructure, hardware maintenance, software troubleshooting, and technical operations for the hospital facility.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Education & Personal Details Section -->
+        <section id="education">
+            <h2 class="section-title">Education & Personal Details</h2>
+            <div class="details-grid">
+                
+                <div class="info-card">
+                    <h3><i class="fa-solid fa-graduation-cap"></i> Education</h3>
+                    <div class="info-list">
+                        <div class="info-row">
+                            <span class="info-label">Degree</span>
+                            <span class="info-value">Bachelor of Science in Computer Science</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Institution</span>
+                            <span class="info-value">PASS College</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Location</span>
+                            <span class="info-value">Alaminos City, Pangasinan</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Year Graduated</span>
+                            <span class="info-value">2017</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <h3><i class="fa-solid fa-user"></i> Personal Information</h3>
+                    <div class="info-list">
+                        <div class="info-row">
+                            <span class="info-label">Birthplace</span>
+                            <span class="info-value">San Isidro, Hagonoy, Bulacan</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Nationality</span>
+                            <span class="info-value">Filipino</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Religion</span>
+                            <span class="info-value">Christian (Born Again)</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Arven E. Solero. Built for GitHub Pages.</p>
+    </footer>
+
+</body>
+</html>
